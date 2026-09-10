@@ -1,2 +1,13 @@
 print("Hello GitHub!")
 print("This is my first contribution.")
+# Student Information Program
+
+name = "Greeshma"
+age = 20
+course = "BTech CSE"
+
+print("----- Student Information -----")
+print("Name:", name)
+print("Age:", age)
+print("Course:", course)
+print("Welcome to GitHub!")

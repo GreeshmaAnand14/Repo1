@@ -1,0 +1,26 @@
+# Student Grade Calculator
+
+name = input("Enter your name: ")
+
+maths = float(input("Enter Maths marks: "))
+python = float(input("Enter Python marks: "))
+computer = float(input("Enter Computer Science marks: "))
+
+total = maths + python + computer
+average = total / 3
+
+print("\n----- Student Result -----")
+print("Name:", name)
+print("Total Marks:", total)
+print("Average:", average)
+
+if average >= 90:
+    print("Grade: A")
+elif average >= 75:
+    print("Grade: B")
+elif average >= 60:
+    print("Grade: C")
+elif average >= 40:
+    print("Grade: D")
+else:
+    print("Grade: F")
