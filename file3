@@ -1,0 +1,23 @@
+# Simple Expense Tracker
+
+budget = float(input("Enter your monthly budget: "))
+
+food = float(input("Enter food expense: "))
+travel = float(input("Enter travel expense: "))
+shopping = float(input("Enter shopping expense: "))
+other = float(input("Enter other expenses: "))
+
+total = food + travel + shopping + other
+remaining = budget - total
+
+print("\n----- Expense Summary -----")
+print("Budget:", budget)
+print("Total Expenses:", total)
+print("Remaining Amount:", remaining)
+
+if total < budget:
+    print("Status: You are within your budget.")
+elif total == budget:
+    print("Status: You have used your entire budget.")
+else:
+    print("Status: You have exceeded your budget.")
