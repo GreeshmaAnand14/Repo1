@@ -1,0 +1,20 @@
+# Bank Loan Eligibility Checker
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+salary = float(input("Enter your monthly salary: "))
+credit_score = int(input("Enter your credit score: "))
+
+print("\n----- Loan Eligibility Result -----")
+
+if age < 18:
+    print("Sorry", name + ", you must be at least 18 years old.")
+elif salary < 25000:
+    print("Sorry", name + ", your salary is too low for this loan.")
+elif credit_score < 650:
+    print("Sorry", name + ", your credit score is too low.")
+else:
+    loan_amount = salary * 10
+    print("Congratulations", name + "!")
+    print("You are eligible for a loan.")
+    print("Estimated maximum loan:", loan_amount)
