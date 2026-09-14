@@ -1,0 +1,39 @@
+# Simple Quiz Game
+
+score = 0
+
+print("----- Python Quiz -----")
+
+answer = input("1. What is the output function in Python? ")
+
+if answer.lower() == "print":
+    print("Correct!")
+    score += 1
+else:
+    print("Wrong!")
+
+answer = input("2. Which symbol is used for comments in Python? ")
+
+if answer == "#":
+    print("Correct!")
+    score += 1
+else:
+    print("Wrong!")
+
+answer = input("3. Which keyword is used for a condition? ")
+
+if answer.lower() == "if":
+    print("Correct!")
+    score += 1
+else:
+    print("Wrong!")
+
+print("\n----- Result -----")
+print("Your score:", score, "/ 3")
+
+if score == 3:
+    print("Excellent!")
+elif score == 2:
+    print("Good job!")
+else:
+    print("Keep practicing!")
