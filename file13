@@ -1,0 +1,13 @@
+numbers = []
+
+n = int(input("How many numbers do you want to enter? "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+print("\nOriginal list:", numbers)
+
+numbers.sort()
+
+print("Sorted list:", numbers)
