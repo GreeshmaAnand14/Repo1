@@ -1,0 +1,33 @@
+marks = []
+
+n = int(input("Enter number of subjects: "))
+
+for i in range(n):
+    mark = float(input("Enter mark: "))
+    marks.append(mark)
+
+
+def calculate_average(marks):
+    return sum(marks) / len(marks)
+
+
+average = calculate_average(marks)
+highest = max(marks)
+lowest = min(marks)
+
+print("\n----- Marks Analysis -----")
+print("Marks:", marks)
+print("Average:", average)
+print("Highest mark:", highest)
+print("Lowest mark:", lowest)
+
+if average >= 90:
+    print("Grade: A")
+elif average >= 75:
+    print("Grade: B")
+elif average >= 60:
+    print("Grade: C")
+elif average >= 40:
+    print("Grade: D")
+else:
+    print("Grade: F")
