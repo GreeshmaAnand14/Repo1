@@ -1,0 +1,25 @@
+numbers = []
+
+n = int(input("How many numbers do you want to enter? "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+positive = 0
+negative = 0
+zero = 0
+
+for number in numbers:
+    if number > 0:
+        positive += 1
+    elif number < 0:
+        negative += 1
+    else:
+        zero += 1
+
+print("\n----- Number Analysis -----")
+print("Numbers:", numbers)
+print("Positive numbers:", positive)
+print("Negative numbers:", negative)
+print("Zeros:", zero)
