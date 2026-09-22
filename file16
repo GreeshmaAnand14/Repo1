@@ -1,0 +1,17 @@
+numbers = []
+
+n = int(input("How many numbers do you want to enter? "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+print("\n----- Frequency -----")
+
+checked = []
+
+for number in numbers:
+    if number not in checked:
+        count = numbers.count(number)
+        print(number, "appears", count, "time(s)")
+        checked.append(number)
