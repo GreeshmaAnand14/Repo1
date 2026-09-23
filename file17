@@ -1,0 +1,13 @@
+numbers = []
+
+n = int(input("How many numbers do you want to enter? "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+numbers.sort()
+
+print("\nNumbers:", numbers)
+print("Largest number:", numbers[-1])
+print("Second largest number:", numbers[-2])
