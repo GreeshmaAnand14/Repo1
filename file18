@@ -1,0 +1,16 @@
+numbers = []
+
+n = int(input("How many numbers do you want to enter? "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+unique_numbers = []
+
+for number in numbers:
+    if number not in unique_numbers:
+        unique_numbers.append(number)
+
+print("\nOriginal list:", numbers)
+print("List without duplicates:", unique_numbers)
