@@ -1,0 +1,25 @@
+
+students = {}
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    name = input("Enter student name: ")
+    marks = float(input("Enter student marks: "))
+    students[name] = marks
+
+print("\n----- Student Records -----")
+
+for name, marks in students.items():
+    print(name, ":", marks)
+
+if len(students) > 0:
+    total = sum(students.values())
+    average = total / len(students)
+
+    highest_student = max(students, key=students.get)
+
+    print("\nTotal marks:", total)
+    print("Average marks:", round(average, 2))
+    print("Highest scorer:", highest_student)
+    print("Highest marks:", students[highest_student])
