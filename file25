@@ -1,0 +1,11 @@
+# Simple Notes Manager
+
+with open("notes.txt", "w") as file:
+    note = input("Enter your note: ")
+    file.write(note + "\n")
+
+print("Note saved successfully!")
+
+with open("notes.txt", "r") as file:
+    print("\nYour saved notes:")
+    print(file.read())
