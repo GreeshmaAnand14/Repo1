@@ -1,0 +1,27 @@
+
+expenses = []
+
+print("===== EXPENSE TRACKER =====")
+
+n = int(input("How many expenses do you want to enter? "))
+
+for i in range(n):
+    amount = float(input(f"Enter expense {i + 1}: ₹"))
+    expenses.append(amount)
+
+total = sum(expenses)
+
+if n > 0:
+    average = total / n
+else:
+    average = 0
+
+print("\n===== EXPENSE SUMMARY =====")
+print("Expenses:", expenses)
+print(f"Total spending: ₹{total:.2f}")
+print(f"Average expense: ₹{average:.2f}")
+
+if total > 1000:
+    print("Notice: Your spending is above ₹1000.")
+else:
+    print("Your spending is within ₹1000.")
