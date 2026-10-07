@@ -1,0 +1,15 @@
+numbers = []
+
+n = int(input("Enter number of elements: "))
+
+for i in range(n):
+    number = int(input("Enter number: "))
+    numbers.append(number)
+
+largest = numbers[0]
+
+for number in numbers:
+    if number > largest:
+        largest = number
+
+print("Largest number =", largest)
