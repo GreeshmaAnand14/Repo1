@@ -1,0 +1,13 @@
+
+try:
+    a = float(input("Enter the first number: "))
+    b = float(input("Enter the second number: "))
+
+    result = a / b
+    print("Result =", result)
+
+except ValueError:
+    print("Please enter valid numbers.")
+
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
