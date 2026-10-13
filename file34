@@ -1,0 +1,13 @@
+
+list1 = input("Enter numbers for the first list: ").split()
+list2 = input("Enter numbers for the second list: ").split()
+
+set1 = set(list1)
+set2 = set(list2)
+
+common = set1 & set2
+
+if common:
+    print("Common elements:", sorted(common, key=int))
+else:
+    print("No common elements found.")
