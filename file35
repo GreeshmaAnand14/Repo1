@@ -1,0 +1,44 @@
+
+def add_record():
+    name = input("Enter student name: ")
+    marks = input("Enter student marks: ")
+
+    with open("students.txt", "a") as file:
+        file.write(name + "," + marks + "\n")
+
+    print("Record saved successfully!")
+
+
+def view_records():
+    try:
+        with open("students.txt", "r") as file:
+            records = file.readlines()
+
+        if not records:
+            print("No records found.")
+        else:
+            print("\n--- Student Records ---")
+            for record in records:
+                name, marks = record.strip().split(",", 1)
+                print(name, "-", marks)
+
+    except FileNotFoundError:
+        print("No records found yet.")
+
+
+while True:
+    print("\n1. Add student")
+    print("2. View students")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_record()
+    elif choice == "2":
+        view_records()
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice.")
