@@ -1,0 +1,50 @@
+
+inventory = {}
+
+while True:
+    print("\n--- Product Inventory ---")
+    print("1. Add product")
+    print("2. View inventory")
+    print("3. Update quantity")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        name = input("Enter product name: ")
+        quantity = int(input("Enter quantity: "))
+
+        if quantity < 0:
+            print("Quantity cannot be negative.")
+        else:
+            inventory[name] = quantity
+            print("Product saved!")
+
+    elif choice == "2":
+        if not inventory:
+            print("Inventory is empty.")
+        else:
+            print("\nProduct        Quantity")
+            for name, quantity in inventory.items():
+                print(name, ":", quantity)
+
+    elif choice == "3":
+        name = input("Enter product name: ")
+
+        if name in inventory:
+            quantity = int(input("Enter new quantity: "))
+
+            if quantity >= 0:
+                inventory[name] = quantity
+                print("Quantity updated!")
+            else:
+                print("Quantity cannot be negative.")
+        else:
+            print("Product not found.")
+
+    elif choice == "4":
+        print("Exiting inventory.")
+        break
+
+    else:
+        print("Invalid choice.")
