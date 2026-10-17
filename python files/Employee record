@@ -1,0 +1,48 @@
+
+import csv
+import os
+
+filename = "employees.csv"
+
+while True:
+    print("\n--- Employee Records ---")
+    print("1. Add employee")
+    print("2. View employees")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        name = input("Enter employee name: ")
+        salary = input("Enter salary: ")
+
+        file_exists = os.path.exists(filename)
+        write_header = (
+            not file_exists or os.path.getsize(filename) == 0
+        )
+
+        with open(filename, "a", newline="") as file:
+            writer = csv.writer(file)
+
+            if write_header:
+                writer.writerow(["Name", "Salary"])
+
+            writer.writerow([name, salary])
+
+        print("Employee saved successfully!")
+
+    elif choice == "2":
+        if not os.path.exists(filename):
+            print("No employee records found.")
+        else:
+            with open(filename, "r", newline="") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    print(" | ".join(row))
+
+    elif choice == "3":
+        print("Exiting employee records.")
+        break
+
+    else:
+        print("Invalid choice.")
