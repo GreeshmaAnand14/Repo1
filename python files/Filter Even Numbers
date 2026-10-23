@@ -1,0 +1,12 @@
+
+numbers = list(map(int, input("Enter numbers separated by spaces: ").split()))
+
+# Select even numbers
+even_numbers = list(filter(lambda n: n % 2 == 0, numbers))
+
+# Square each even number
+squares = list(map(lambda n: n * n, even_numbers))
+
+print("Original numbers:", numbers)
+print("Even numbers:", even_numbers)
+print("Squares of even numbers:", squares)
