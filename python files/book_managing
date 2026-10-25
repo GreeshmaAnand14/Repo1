@@ -1,0 +1,86 @@
+
+books = {}
+
+def add_book():
+    book_id = input("Enter book ID: ").strip()
+
+    if book_id in books:
+        print("Book ID already exists!")
+        return
+
+    title = input("Enter book title: ").strip()
+    author = input("Enter author name: ").strip()
+
+    if not title or not author:
+        print("Title and author cannot be empty.")
+        return
+
+    books[book_id] = {
+        "title": title,
+        "author": author,
+        "available": True
+    }
+
+    print("Book added successfully!")
+
+def display_books():
+    if not books:
+        print("No books available.")
+        return
+
+    print("\n--- Library Books ---")
+
+    for book_id, book in books.items():
+        status = "Available" if book["available"] else "Borrowed"
+
+        print(f"ID: {book_id}")
+        print(f"Title: {book['title']}")
+        print(f"Author: {book['author']}")
+        print(f"Status: {status}")
+        print("--------------------")
+
+def borrow_book():
+    book_id = input("Enter book ID to borrow: ").strip()
+
+    if book_id not in books:
+        print("Book not found!")
+    elif not books[book_id]["available"]:
+        print("Book is already borrowed.")
+    else:
+        books[book_id]["available"] = False
+        print("Book borrowed successfully!")
+
+def return_book():
+    book_id = input("Enter book ID to return: ").strip()
+
+    if book_id not in books:
+        print("Book not found!")
+    elif books[book_id]["available"]:
+        print("This book was not borrowed.")
+    else:
+        books[book_id]["available"] = True
+        print("Book returned successfully!")
+
+while True:
+    print("\n===== LIBRARY MENU =====")
+    print("1. Add Book")
+    print("2. Display Books")
+    print("3. Borrow Book")
+    print("4. Return Book")
+    print("5. Exit")
+
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        add_book()
+    elif choice == "2":
+        display_books()
+    elif choice == "3":
+        borrow_book()
+    elif choice == "4":
+        return_book()
+    elif choice == "5":
+        print("Thank you!")
+        break
+    else:
+        print("Invalid choice!")
