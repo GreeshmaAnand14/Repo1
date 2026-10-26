@@ -1,0 +1,42 @@
+
+def analyze_scores(scores):
+    total = sum(scores)
+    average = total / len(scores)
+    highest = max(scores)
+    lowest = min(scores)
+
+    passed = sum(1 for score in scores if score >= 40)
+    failed = len(scores) - passed
+
+    print("\n--- QUIZ SCORE REPORT ---")
+    print("Scores:", scores)
+    print("Total:", total)
+    print(f"Average: {average:.2f}")
+    print("Highest:", highest)
+    print("Lowest:", lowest)
+    print("Passed:", passed)
+    print("Failed:", failed)
+
+
+try:
+    n = int(input("How many quiz scores? "))
+
+    if n <= 0:
+        print("Enter a positive number of scores.")
+    else:
+        scores = []
+
+        for i in range(n):
+            score = float(input(f"Enter score {i + 1} (0-100): "))
+
+            if not 0 <= score <= 100:
+                print("Invalid score! Enter a value from 0 to 100.")
+                break
+
+            scores.append(score)
+
+        if len(scores) == n:
+            analyze_scores(scores)
+
+except ValueError:
+    print("Please enter valid numeric input.")
