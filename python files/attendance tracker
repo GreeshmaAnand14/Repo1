@@ -1,0 +1,58 @@
+
+attendance = {}
+
+def mark_attendance():
+    name = input("Enter student name: ").strip()
+
+    if not name:
+        print("Name cannot be empty.")
+        return
+
+    status = input("Present or Absent (P/A): ").strip().upper()
+
+    if status not in ("P", "A"):
+        print("Invalid attendance status!")
+        return
+
+    attendance.setdefault(name, {"present": 0, "absent": 0})
+
+    if status == "P":
+        attendance[name]["present"] += 1
+        print("Marked Present.")
+    else:
+        attendance[name]["absent"] += 1
+        print("Marked Absent.")
+
+def view_report():
+    if not attendance:
+        print("No attendance records yet.")
+        return
+
+    print("\n--- ATTENDANCE REPORT ---")
+
+    for name, record in attendance.items():
+        total = record["present"] + record["absent"]
+        percentage = record["present"] / total * 100
+
+        print(f"\nStudent: {name}")
+        print("Present:", record["present"])
+        print("Absent:", record["absent"])
+        print(f"Attendance: {percentage:.2f}%")
+
+while True:
+    print("\n--- ATTENDANCE MENU ---")
+    print("1. Mark Attendance")
+    print("2. View Report")
+    print("3. Exit")
+
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        mark_attendance()
+    elif choice == "2":
+        view_report()
+    elif choice == "3":
+        print("Exiting tracker.")
+        break
+    else:
+        print("Invalid choice!")
