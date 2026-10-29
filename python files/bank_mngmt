@@ -1,0 +1,89 @@
+
+import json
+import os
+FILE = "bank_transactions.json"
+balance = 0.0
+history = []
+
+# Load saved data
+if os.path.exists(FILE):
+    try:
+        with open(FILE, "r") as f:
+            data = json.load(f)
+            balance = float(data["balance"])
+            history = data["history"]
+
+        if balance < 0:
+            raise ValueError("Invalid balance")
+
+    except (ValueError, TypeError, KeyError, OSError):
+        print("Could not load valid account data.")
+        raise SystemExit
+
+def save_data():
+    with open(FILE, "w") as f:
+        json.dump({
+            "balance": balance,
+            "history": history
+        }, f, indent=4)
+
+while True:
+    print("\n--- BANK MENU ---")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Transaction History")
+    print("5. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        try:
+            amount = float(input("Deposit amount: "))
+
+            if not 0 < amount < 1_000_000_000:
+                print("Enter a valid positive amount.")
+                continue
+
+            balance = round(balance + amount, 2)
+            history.append(f"Deposited: {amount:.2f}")
+            save_data()
+            print("Deposit successful!")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+    elif choice == "2":
+        try:
+            amount = float(input("Withdrawal amount: "))
+
+            if not 0 < amount < 1_000_000_000:
+                print("Enter a valid positive amount.")
+            elif amount > balance:
+                print("Insufficient balance!")
+            else:
+                balance = round(balance - amount, 2)
+                history.append(f"Withdrawn: {amount:.2f}")
+                save_data()
+                print("Withdrawal successful!")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+    elif choice == "3":
+        print(f"Current balance: Rs. {balance:.2f}")
+
+    elif choice == "4":
+        print("\n--- TRANSACTION HISTORY ---")
+        if not history:
+            print("No transactions yet.")
+        else:
+            for i, transaction in enumerate(history, 1):
+                print(i, transaction)
+
+    elif choice == "5":
+        print("Thank you!")
+        break
+
+    else:
+        print("Invalid choice!")
