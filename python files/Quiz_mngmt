@@ -1,0 +1,57 @@
+
+questions = [
+    {
+        "question": "1. Which language is used for system programming?",
+        "options": ["A. HTML", "B. C", "C. CSS", "D. SQL"],
+        "answer": "B"
+    },
+    {
+        "question": "2. Which data structure follows FIFO?",
+        "options": ["A. Stack", "B. Tree", "C. Queue", "D. Graph"],
+        "answer": "C"
+    },
+    {
+        "question": "3. What is the output of 2 ** 3 in Python?",
+        "options": ["A. 6", "B. 8", "C. 9", "D. 5"],
+        "answer": "B"
+    },
+    {
+        "question": "4. Which algorithm uses divide and conquer?",
+        "options": ["A. Merge Sort", "B. Linear Search",
+                    "C. Bubble Sort", "D. Counting"],
+        "answer": "A"
+    },
+    {
+        "question": "5. Which keyword defines a function in Python?",
+        "options": ["A. func", "B. define", "C. def", "D. function"],
+        "answer": "C"
+    }
+]
+
+def conduct_quiz():
+    score = 0
+
+    for q in questions:
+        print("\n" + q["question"])
+
+        for option in q["options"]:
+            print(option)
+
+        choice = input("Enter your answer (A/B/C/D): ").strip().upper()
+
+        if choice not in ["A", "B", "C", "D"]:
+            print("Invalid choice! No mark awarded.")
+        elif choice == q["answer"]:
+            print("Correct!")
+            score += 1
+        else:
+            print("Wrong answer!")
+
+    print("\n--- QUIZ RESULT ---")
+    print("Total questions:", len(questions))
+    print("Correct answers:", score)
+    print("Wrong answers:", len(questions) - score)
+    print("Score:", score, "/", len(questions))
+    print("Percentage:", round(score / len(questions) * 100, 2), "%")
+
+conduct_quiz()
