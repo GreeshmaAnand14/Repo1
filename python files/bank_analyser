@@ -1,0 +1,63 @@
+
+transactions = []
+balance = 0
+
+def deposit():
+    global balance
+
+    amount = float(input("Enter deposit amount: "))
+
+    if amount <= 0:
+        print("Enter a valid amount!")
+        return
+
+    balance += amount
+    transactions.append({"type": "Deposit", "amount": amount})
+    print("Amount deposited successfully!")
+
+def withdraw():
+    global balance
+
+    amount = float(input("Enter withdrawal amount: "))
+
+    if amount <= 0:
+        print("Enter a valid amount!")
+    elif amount > balance:
+        print("Insufficient balance!")
+    else:
+        balance -= amount
+        transactions.append({"type": "Withdrawal", "amount": amount})
+        print("Amount withdrawn successfully!")
+
+def show_history():
+    if not transactions:
+        print("No transactions available.")
+        return
+
+    print("\n--- Transaction History ---")
+
+    for transaction in transactions:
+        print(transaction["type"], "-", transaction["amount"])
+
+while True:
+    print("\n1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Transaction History")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        deposit()
+    elif choice == "2":
+        withdraw()
+    elif choice == "3":
+        print("Current Balance:", balance)
+    elif choice == "4":
+        show_history()
+    elif choice == "5":
+        print("Thank you!")
+        break
+    else:
+        print("Invalid choice!")
