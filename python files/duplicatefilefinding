@@ -1,0 +1,46 @@
+
+import os
+import hashlib
+
+folder = input("Enter folder path to scan: ")
+
+file_hashes = {}
+
+if not os.path.isdir(folder):
+    print("Folder does not exist!")
+else:
+    for root, dirs, files in os.walk(folder):
+        for filename in files:
+            path = os.path.join(root, filename)
+
+            try:
+                hasher = hashlib.sha256()
+
+                with open(path, "rb") as file:
+                    for chunk in iter(lambda: file.read(4096), b""):
+                        hasher.update(chunk)
+
+                file_hash = hasher.hexdigest()
+
+                if file_hash in file_hashes:
+                    file_hashes[file_hash].append(path)
+                else:
+                    file_hashes[file_hash] = [path]
+
+            except (PermissionError, OSError):
+                print("Could not read:", path)
+
+    print("\nDUPLICATE FILES")
+    print("----------------")
+
+    found = False
+
+    for paths in file_hashes.values():
+        if len(paths) > 1:
+            found = True
+            print("\nSame content found in:")
+            for path in paths:
+                print(path)
+
+    if not found:
+        print("No duplicate files found.")
